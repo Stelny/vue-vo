@@ -6,11 +6,11 @@ import type { TUser } from "./../src/types/User";
 
 const httpServer = createServer();
 
-// Create a socket.io instance and configure CORS
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://127.0.0.1:5173", // Replace with your frontend URL
+    origin: "http://127.0.0.1:5173",
     methods: ["GET", "POST"],
+    credentials: true
   },
 });
 

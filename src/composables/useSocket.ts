@@ -33,7 +33,7 @@ export function useSocket() {
   
   const updateUser = (user: TUser) => {
     if (!socket.value) return;
-    socket.value.emit("updateUser", user);
+    socket.value.emit("editUser", user);
   }
 
   onMounted(() => {

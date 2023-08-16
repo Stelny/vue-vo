@@ -8,6 +8,26 @@ const formatSecondsToMinutesAndSeconds = (totalSeconds: number): string => {
     return `${formattedMinutes}:${formattedSeconds}`;
 };
 
+const formatTime = (entry: Date | string): string => {
+    let date: Date;
+  
+    if (typeof entry === "string") {
+      date = new Date(entry);
+    } else if (entry instanceof Date) {
+      date = entry;
+    } else {
+      return "neplatný datum";
+    }
+  
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+  
+    return `${hours}:${minutes}:${seconds}`;
+  };
+  
+
 export {
+    formatTime,
     formatSecondsToMinutesAndSeconds
 }

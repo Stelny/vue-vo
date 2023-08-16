@@ -42,7 +42,7 @@ const timeScreenStore = useTimeScreenStore();
         <UserCardStripe :activity="user.activity"/>
         <div class="user-card-bottom"> 
             <UserCardSelect v-if="!user.activity" :user="user"/>
-            <UserCardTimer v-if="user.activity" :activity="user.activity" />
+            <UserCardTimer v-if="user.activity" :activity="user.activity" :id_user="user.id"/>
         </div>
     </div>
 </template>
@@ -113,15 +113,6 @@ const timeScreenStore = useTimeScreenStore();
                     }
                 }
             }
-        }
-
-        &-timer {
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-weight: bold;
         }
     }
 </style>

@@ -2,12 +2,15 @@
 import type { TUser } from "@/types/User";
 
 import { ACTIVITY_TYPES } from "./../../../utils/data/activity";
+import { useTimeScreenStore } from "./../../../store/timeScreenStore";
 
 const {
     user
 } = defineProps<{
     user: TUser
 }>()
+
+const timeScreenStore = useTimeScreenStore();
 
 
 
@@ -18,7 +21,7 @@ const {
             <img src="./../../../assets/images/barcode.png" alt="Barcode" />
             Čekání na scan
         </div>
-        <button class="user-card-item type" v-for="activityType in ACTIVITY_TYPES" v-bind:key="activityType.type" :style="{
+        <button class="user-card-item type" v-for="activityType in ACTIVITY_TYPES" v-bind:key="activityType.type" @click="timeScreenStore.addActivity(activityType.type, user.id)" :style="{
             background: activityType.hex
         }">
             {{ activityType.name }}

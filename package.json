@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "start:server": "nodemon --watch 'server/*.ts' --exec 'ts-node --project tsconfig.server.json server/index.ts'"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@types/node": "^20.5.0",

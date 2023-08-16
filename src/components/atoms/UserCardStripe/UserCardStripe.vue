@@ -1,24 +1,31 @@
 <script setup lang="ts">
-import { TActivity } from "./../../../types/Activity";
+import { computed } from "vue";
+import { formatTime } from "./../../../utils/format/time";
+import { EActivityType, TActivity } from "./../../../types/Activity";
 
-const {
-    activity
-} = defineProps<{
+const props = defineProps<{
     activity?: TActivity
 }>()
+
+
+const activityName = computed(() => {
+    if (props.activity?.activityType === EActivityType.BREAK) return "Pauza"
+    if (props.activity?.activityType === EActivityType.CLEANING) return "Úklid"
+    return "Zakázkový list č.";
+})
 
 </script>
 <template>
     <div class="user-card-stripe" :class="{
-        isActivity: activity
+        isActivity: props.activity
     }"
     >
-        <template v-if="activity">
+        <template v-if="props.activity">
             <div class="user-card-stripe-name">
-                Zakázkový list č. <b>{{ activity?.orderSheet?.id }}</b>
+                {{ activityName }} <b>{{ activity?.orderSheet?.id }}</b>
             </div>
             <div class="user-card-stripe-start">
-                od {{ activity.startDate }}
+                od {{ formatTime(props.activity.startDate) }}
             </div>
         </template>
         <template v-else>
