@@ -15,7 +15,7 @@ export type TActivityType = {
 export type TActivity = {
     id: string,
     activityType: EActivityType,
-    startDate: Date,
+    startDate: Date | string,
     orderSheet?: TOrderSheet,
 }
 

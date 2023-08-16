@@ -18,7 +18,7 @@ const {
                 Zakázkový list č. <b>{{ activity?.orderSheet?.id }}</b>
             </div>
             <div class="user-card-stripe-start">
-                od {{ activity.startDate?.toLocaleTimeString() }}
+                od {{ activity.startDate }}
             </div>
         </template>
         <template v-else>

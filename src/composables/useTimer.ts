@@ -1,7 +1,7 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 
 interface IProps {
-    startTime: Date
+    startTime: Date | string
 }
 
 const useTimer = ({
@@ -10,9 +10,10 @@ const useTimer = ({
     const countdown = ref<number>(0);
     
     const updateCountdown = () => {
+        const st = new Date(startTime);
         const interval = setInterval(() => {
             const currentTime = new Date();
-            const timeDifference = Math.floor((currentTime.getTime() - startTime.getTime()) / 1000);
+            const timeDifference = Math.floor((currentTime.getTime() - st.getTime()) / 1000);
             countdown.value = timeDifference;
         }, 1000);
         

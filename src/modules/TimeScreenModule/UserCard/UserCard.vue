@@ -4,6 +4,7 @@ import UserCardStripe from "./../../../components/atoms/UserCardStripe/UserCardS
 import type { TUser } from "@/types/User";
 import UserCardSelect from "./UserCardSelect.vue";
 import UserCardTimer from "./UserCardTimer.vue";
+import { useTimeScreenStore } from "./../../../store/timeScreenStore";
 
 // props
 const {
@@ -14,6 +15,7 @@ const {
     active: boolean
 }>()
 
+const timeScreenStore = useTimeScreenStore();
 // ref
 
 // composables
@@ -32,7 +34,7 @@ const {
             <div class="user-card-top-name">
                 {{ user.name  }} {{ user.surname  }} ({{ user.id  }})
             </div>
-            <button class="user-card-top-close">
+            <button class="user-card-top-close" @click="timeScreenStore.deleteUser(user.id)">
                <span></span>
                <span></span>
             </button>

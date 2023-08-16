@@ -1,13 +1,24 @@
 <script setup lang="ts">
     import UserCard from "./../UserCard/UserCard.vue"
     import { USERS } from "./../../../utils/data/user";
+    import { useTimeScreenStore } from "./../../../store/timeScreenStore";
+import { storeToRefs } from "pinia";
+
+
+
+    const timeScreenStore = useTimeScreenStore();
+
+    const { users } = storeToRefs(timeScreenStore);
+
 </script>
 <template>
     <div class="dashboard-layout">
-        <UserCard v-for="user in USERS" v-bind:key="user.id" :user="user" :active="false"/>
-        <button class="settings">
-            T
-        </button>
+        <UserCard v-for="user in users" v-bind:key="user.id" :user="user" :active="false"/>
+        <div class="settings">
+            <button v-for="(user, index) in USERS" v-bind:key="user.id" @click="timeScreenStore.addUser(USERS[index])">
+                {{ user.id }}
+            </button>
+        </div>
     </div>
 </template>
 <style lang="scss">
@@ -36,6 +47,9 @@
         border-radius: 50px;
         font-size: 70px;
         font-weight: 700;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         cursor: pointer;
     }
 </style>
