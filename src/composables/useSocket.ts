@@ -9,7 +9,7 @@ export function useSocket() {
   const connectToSocket = () => {
     if (socket.value) return;
 
-    socket.value = io('http://localhost:3000'); // Replace with your server's URL
+    socket.value = io('http://localhost:3000');
 
     socket.value.on('connect', () => {
       isConnected.value = true;

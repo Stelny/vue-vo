@@ -16,8 +16,8 @@ import { storeToRefs } from "pinia";
     <div class="dashboard-layout">
         <UserCard v-for="user in users" v-bind:key="user.id" :user="user" :active="false"/>
         <div class="settings">
-            <button @click="timeScreenStore.addUser(USERS[Math.round(Math.random()*20)])">Uživatel</button>
-            <button @click="timeScreenStore.addList()">List</button>
+            <button @click="timeScreenStore.addUser(USERS[Math.round(Math.random()*20)])">Načíst uživatele</button>
+            <button @click="timeScreenStore.addList()">Načíst List</button>
         </div>
     </div>
 </template>
@@ -44,7 +44,6 @@ import { storeToRefs } from "pinia";
         bottom: 2rem;
         right: 2rem;
         background: white;
-        border: 2px solid $borderColor;
         border-radius: 18px;
         font-size: 70px;
         font-weight: 700;
@@ -62,13 +61,18 @@ import { storeToRefs } from "pinia";
         max-width: fit-content;
         button {
             margin: 0.5rem;
-            background: rgb(45, 208, 178);
+            background: rgb(229, 196, 49);
             border: 0;
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
             border-radius: 12px;
             color: white;
-            font-size: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
+            &:last-child {
+                background:rgb(50, 196, 49); ;
+            }
         }
     }
 </style>

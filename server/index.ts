@@ -28,7 +28,7 @@ io.on("connection", (socket: Socket) => {
   })
 
   socket.on("deleteUser", (id_user: string) => {
-    console.log(`[editUser]: Delete user `,id_user)
+    console.log(`[deleteUser]: Delete user `,id_user)
     socket.broadcast.emit("deleteUser", id_user);
   })
 

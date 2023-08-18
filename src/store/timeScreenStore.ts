@@ -76,12 +76,10 @@ export const useTimeScreenStore = defineStore("timeScreen", () => {
         });
 
         socket.socket.value?.on('deleteUser', (id_user: string) => {
-            console.log(id_user)
             users.value = users.value.filter(user => user.id !== id_user);
         });
         
         socket.socket.value?.on('editUser', (user: TUser) => {
-            console.log("cau")
             users.value = users.value.map(_user => {
                 if (_user.id === user.id) return user;
                 return _user;
